@@ -23,7 +23,6 @@ io.on("connection", (socket) =>{
     });
 
     socket.on("Coordinates", (coordinates) =>{
-            if(coordinates == false){socket.broadcast.emit("coordinates", coordinates);}
                socket.broadcast.emit("coordinates", coordinates)
     });
     socket.on("ChangeSlide", (msg) =>{
