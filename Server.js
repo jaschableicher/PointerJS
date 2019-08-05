@@ -33,6 +33,20 @@ io.on("connection", (socket) =>{
     socket.on("currentSlide", (msg) =>{
         socket.broadcast.emit('Slide', msg)
     });
+    socket.on("jumpto", (slide) =>{
+        console.log(slide);
+        if(isNaN(slide)){
+            socket.broadcast.emit("jumpto", {
+                slide: slide,
+                n: false
+            })
+        }else{
+            socket.broadcast.emit("jumpto", {
+                slide: slide,
+                n: true
+            })
+        }
+    });
     
     socket.on('disconnect', function(){
         usersonline--;
