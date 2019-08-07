@@ -1,14 +1,9 @@
 if("undefined"==typeof jQuery)throw new Error("Pointer.js needs Jquery");
 console.log("You can open your Pointer by pressing Ö")
-console.log(window.location)
-
-var backgroundColor = "red";
-var width = "20px";
-var height = "20px";
-var connectTo;
-var Slideemitted;
+var backgroundColor = "red", width = "20px", height = "20px",connectTo,Slideemitted, pointer;
 function initialize(object){
 
+    pointer = object.PointerSite || "/pointer";
         if(object.color){
            backgroundColor = object.color;
         }
@@ -23,11 +18,9 @@ function initialize(object){
     var Pointer = {
         initialize : initialize
     }
-    //Pointer.initialize({color:"orange", width:"100px", height: "200px"})
     //Notification.requestPermission(function(){});
 
     $(function(){
-        console.log(connectTo)
         var socket = io(connectTo);
         socket.emit("welcome", socket.id)
         socket.emit("height",{
@@ -51,24 +44,26 @@ function initialize(object){
             }else if(msg == "up"){
                 Reveal.up()
             }else if(msg == "down"){
-                Reveal.down();
-                    }
-               if(Slideemitted == false){ 
-                socket.emit("currentSlide",window.location.hash);
-                Slideemitted = true;
-               }
+                Reveal.down()
+             }
+             let x = Reveal.getSlidePastCount();
+             let z = Reveal.getCurrentSlide();
+            
+                socket.emit("currentSlide", {
+                    A: x,
+                    B: z
+                }
+                );
+                
         })
         socket.on('jumpto', function(e){
-            if(e.n){
-                console.log("You will go to page Number " + e.slide)
-            }else{
-                console.log("You will got to the link: " + e.slide)
-            }
+            
+                Reveal.navigateTo(e.slide);
+            
         });
     });
     window.onkeypress = function(e){
-        console.log("mem")
         if(e.key.toUpperCase() == "Ö" ){
-             window.open("http://localhost:3000/pointer", "_blank", "toolbar=yes,scrollbars=yes,resizable=yes,top=500,left=500,width=400,height=400");
+             window.open(pointer, "_blank", "toolbar=yes,scrollbars=yes,resizable=yes,top=500,left=500,width=400,height=400");
         }
     }
