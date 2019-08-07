@@ -425,9 +425,9 @@ Reveal.addEventListener( 'customevent', function() {
 				color: "orange",
 				width: "20", // recommended and standard
 				height: "20",
-				onlyPointer:false, // if you don't want the left right up down buttons
-				Server: "localhost:3000" // Only needed if this file is not on the same server or port as this page
-
+				PointerSite : "/pointer", // If not defined its automaticly "/pointer"
+				Server: "localhost:3000", // Only needed if this file is not on the same server or port as this page
+				automaticPointer: true // If you are on a phone you will automaticly will be send to the pointer site
 			})
 
 		</script>
