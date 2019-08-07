@@ -82,7 +82,6 @@ $("#closePointer").click(function(a){
 
 window.ontouchmove = function(e, err){
     if($("#hid").val() == "true"){
-        console.log("mem")
         
         if(err) throw err;
         var X = e.targetTouches[0].clientX;
@@ -120,13 +119,15 @@ d.getElementById("down").onclick = function(){
     socket.emit("ChangeSlide", "down")
 }
 socket.on('Slide', function(num){
-        d.getElementById("currentSlide").innerHTML = num.split("/")[1];
+    console.log(num)
+        d.getElementById("currentSlide").innerHTML = num.A;
        
     })
     d.getElementById("jumpForm").onsubmit = function(e){
         e.preventDefault();
         var x = $("#jumpto").val();
-        socket.emit("jumpto", x);
+        if(!isNaN(x))socket.emit("jumpto", x);
+        else alert("Please type in a number");
     }
     window.addEventListener("online", () =>{
         console.log("online");
