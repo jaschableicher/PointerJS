@@ -30,6 +30,7 @@ io.on("connection", (socket) =>{
         
     })
     socket.on("currentSlide", (msg) =>{
+        console.log(msg)
         socket.broadcast.emit('Slide', msg)
     });
     socket.on("jumpto", (slide) =>{
