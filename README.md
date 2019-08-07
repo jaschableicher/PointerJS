@@ -1,7 +1,5 @@
 # PointerJS
 
-A RevealJS remote Control.<br>
-This Project is for Remote Controling RevealJS.<br>
-You can use the integrated Pointer to point out objects in your presentation
+A simple to use Remote Control and Pointer for RevealJS
 
 # General Usage
