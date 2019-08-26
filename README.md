@@ -17,4 +17,3 @@ Include PointerJS in your Remote Control side:
 ```
 <script type="text/javascript" src="/public/js/Pointer.js></script>
 ```
-
