@@ -16,7 +16,7 @@ var usersonline = 0;
 io.on("connection", (socket) =>{
         usersonline++;
    
-    console.log(socket.id)
+    socket.join();
     console.log(`1 user connected. Currently ${usersonline} Users are online`);
     socket.on("height", (numbers) =>{
         socket.broadcast.emit("height", numbers);
