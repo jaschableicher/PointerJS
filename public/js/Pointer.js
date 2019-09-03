@@ -8,6 +8,13 @@ var z;
 
 function initialize(object){
         connecto = object.server || undefined;
+        if(object.notes == false){
+            d.getElementById("notes").style.visibility = "hidden"
+        }else if(object.notes == true){
+            d.getElementById("notes").style.visibility = "visible"
+        }else if(typeof object.notes == "undefined"){
+            d.getElementById("notes").style.visibility = "visible"
+        }
         var script = [], crS = d.createElement("script");
         var style = [], crL = d.createElement("link");
         var head = d.getElementsByTagName("head")[0];
@@ -103,7 +110,7 @@ window.ontouchmove = function(e, err){
     }
 socket.on('disconnect', function(){
     console.log('disconnected')
-    document.cookie = "token=;";
+    d.cookie = "token=;";
 })
 
  d.getElementById("Up").onclick = function(){
@@ -119,20 +126,71 @@ d.getElementById("down").onclick = function(){
     socket.emit("ChangeSlide", "down")
 }
 socket.on('Slide', function(num){
-    console.log(num)
         d.getElementById("currentSlide").innerHTML = num.A;
+        if(num.B != null){
+            $("#notes").html(num.B)
+        }else{
+            $("#notes").html("")
+        }
        
     })
+    /*
     d.getElementById("jumpForm").onsubmit = function(e){
         e.preventDefault();
         var x = $("#jumpto").val();
-        if(!isNaN(x))socket.emit("jumpto", x);
+        if(!isNaN(x))socket.emit("jumpto", x), $("#currentSlide").val(x);
         else alert("Please type in a number");
-    }
-    window.addEventListener("online", () =>{
-        console.log("online");
-    })
-    window.addEventListener("offline", () =>{
-        console.log("offline")
-    })
+    }*/
+    var ispaused = false;
+        $("#pause").click(function(){
+            if(ispaused){ $("#top").show(); $(this).html("Pause Presentation");socket.emit("pause", false); ispaused = false; return};
+            socket.emit("pause", true);
+            $("#top").hide();
+            $(this).html("Resume Presentation");
+            ispaused = true;
+        })
+        socket.on("paused", function(type){
+            if(type == true){
+                ispaused = true;
+                $("#top").hide();
+                $("#pause").html("Resume Presentation");
+            }else if(type == false){
+                ispaused = false;
+                $("#top").show(); 
+                $("#pause").html("Pause Presentation");
+                return;
+            }
+        })
+        socket.on("pauses", function(type){
+            if(type == true){
+                ispaused = true;
+                $("#top").hide();
+                $("#pause").html("Resume Presentation");
+            }else if(type == false){
+                ispaused = false;
+                $("#top").show(); 
+                $("#pause").html("Pause Presentation");
+                return;
+            }
+        })
 })
+var modal = document.getElementById("myModal");
+var span = document.getElementsByClassName("close")[0];
+  $("#SlidePreview").click(function(e) {
+     
+        modal.style.display = "block";
+        link = this;
+      
+        var iframe = document.createElement("iframe");
+        iframe.src
+    });
+    span.onclick = function() {
+      modal.style.display = "none";
+    }
+    
+  
+    window.onclick = function(event) {
+      if (event.target == modal) {
+        modal.style.display = "none";
+      }
+    }

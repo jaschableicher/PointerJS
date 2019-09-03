@@ -21,6 +21,8 @@ function initialize(object){
     //Notification.requestPermission(function(){});
 
     $(function(){
+        console.log(Reveal.getSlide(2))
+
         var socket = io(connectTo);
         socket.emit("welcome", socket.id)
         socket.emit("height",{
@@ -46,9 +48,10 @@ function initialize(object){
             }else if(msg == "down"){
                 Reveal.down()
              }
-             let x = Reveal.getSlidePastCount();
-             let z = Reveal.getCurrentSlide();
             
+             let x = Reveal.getSlidePastCount();
+             let z = Reveal.getSlideNotes();
+            // getCurrentSlide z = z.innerHTML        
                 socket.emit("currentSlide", {
                     A: x,
                     B: z
@@ -56,14 +59,21 @@ function initialize(object){
                 );
                 
         })
-        socket.on('jumpto', function(e){
+        
+        
+        socket.on("pause", function(type){
+            Reveal.togglePause();
+            console.log(Reveal.isPaused())
+        })
+        window.onkeypress = function(e){
+            console.log("key pressed" + e.key);
+            if(e.key.toUpperCase() == "Ö" ){
+                 window.open(pointer, "_blank", "toolbar=yes,scrollbars=yes,resizable=yes,top=500,left=500,width=400,height=400");
+                 return;
+            }
             
-                Reveal.navigateTo(e.slide);
             
-        });
-    });
-    window.onkeypress = function(e){
-        if(e.key.toUpperCase() == "Ö" ){
-             window.open(pointer, "_blank", "toolbar=yes,scrollbars=yes,resizable=yes,top=500,left=500,width=400,height=400");
         }
-    }
+    });
+    
+    

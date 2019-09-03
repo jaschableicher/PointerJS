@@ -16,7 +16,7 @@ var usersonline = 0;
 io.on("connection", (socket) =>{
         usersonline++;
    
-    socket.join();
+    console.log(socket.id)
     console.log(`1 user connected. Currently ${usersonline} Users are online`);
     socket.on("height", (numbers) =>{
         socket.broadcast.emit("height", numbers);
@@ -30,23 +30,22 @@ io.on("connection", (socket) =>{
         
     })
     socket.on("currentSlide", (msg) =>{
-        console.log(msg)
-        socket.broadcast.emit('Slide', msg)
+          socket.broadcast.emit('Slide', msg)
     });
     socket.on("jumpto", (slide) =>{
-        console.log(slide);
-        if(isNaN(slide)){
             socket.broadcast.emit("jumpto", {
                 slide: slide,
                 n: false
             })
-        }else{
-            socket.broadcast.emit("jumpto", {
-                slide: slide,
-                n: true
-            })
-        }
+        
     });
+    socket.on("paused", type =>{
+        socket.broadcast.emit("paused", type)
+    })
+    socket.on("pause", (type) =>{
+        console.log(type);
+        socket.broadcast.emit("pause", type);
+    })
     
     socket.on('disconnect', function(){
         usersonline--;
