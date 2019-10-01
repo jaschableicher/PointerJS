@@ -6,11 +6,11 @@ var io = require('socket.io')(http);
 app.use("/public", express.static("public"));
 
 app.get("/", (req, res) => {
-    res.sendFile(__dirname + "/demo.html")
+    res.sendFile(__dirname + "/lib/demo.html")
 });
 
 app.get("/pointer", (req, res) =>{
-    res.sendFile(__dirname + "/Pointer.html")
+    res.sendFile(__dirname + "/lib/Pointer.html")
 })
 var usersonline = 0;
 io.on("connection", (socket) =>{
