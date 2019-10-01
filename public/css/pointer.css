@@ -1,0 +1,83 @@
+html{
+    width: 100%;
+    height: 100%;
+}
+#pointer-frame{ 
+    background-color: white;
+    margin-top: 50%;
+    border-bottom: 1px solid black;
+}
+#main{
+    text-align:center;
+}
+#left{
+    float:left;
+}
+#right{
+    float: right;
+}
+
+/* Bootstraps Buttons */
+.btn-success{
+    width: 50%;
+}
+.btn-primary{
+    width: 100%;
+}
+#SlidePreview{
+    width:100%;
+    margin-top: 1em;
+}
+#pause{
+    position: fixed;
+    bottom: 0;
+    left:0;
+    width: 100%;
+}
+.modal {
+    text-align:center;
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    padding-top: 100px; /* Location of the box */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+    }
+
+    /* Modal Content */
+.modal-content {
+    background-color: #fefefe;
+    margin: auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 40%;
+    text-align:center;
+
+    }
+
+    /* The Close Button */
+.close {
+    color: #aaaaaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    }
+
+.close:hover,
+.close:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+    }
+.fslex{
+        display:block;
+        margin-left: -50px;
+    }
+    .modal button {
+        margin-left: 40px;
+    }

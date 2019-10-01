@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>RevealJS Fernbedinung</title>
+    
+	<meta name="description" content="PointerJS is a plugin to use Reveal.js wireless">
+	<meta name="author" content="Jascha Bleicher">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+    <script src="/public/js/jquery.min.js"></script>
+    <script src="https://cdn.socket.io/socket.io-1.4.3.js"></script>
+    <link rel="stylesheet" href="/public/css/pointer.css">
+        
+        
+    </head>
+    
+    <body >
+        <div id="main">
+            <div id="top">
+                <button class="btn btn-primary" id="onlyPointer">Pointer</button>
+                    <br><br>
+                    <button id="Up" class="btn btn-success">Up</button>
+                        <div class="flex">
+                            <button id="left" class="btn btn-success">Left</button>
+                            <button id="right" class="btn btn-success">Right</button>
+                        </div>
+                        <button id="down" class="btn btn-success">Down</button>
+                        <button id="SlidePreview" class="btn">Preview Next</button>
+                        <div>
+                            <h1 stlye="text-decoration: underline">Current Slide:</h1>
+                            <h1 id="currentSlide"></h1>
+                        </div>
+                 <br>
+                    <div id="notes"></div>
+            </div>
+                    <button class="btn btn-danger" id="pause" >Pause Presentation</button>
+                </div>
+        </div>
+        
+        <div id="pointer">
+                <button class="btn btn-primary" id="closePointer">Close pointer</button>
+        </div>
+        <div id="myModal" class="modal">
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <h3>Mem</h3>
+                <p>Text</p>
+                    
+            </div>
+        </div>
+        <input id="hid" type="hidden">
+        <script src="/public/js/Pointer.js" defer></script>
+        <script>
+            Pointer.initialize({
+                server: "localhost:3000", // socketio Server
+                notes: true, // You can  see your RevealJS notes
+                dependencies:[
+                    { src: "/public/bootstrap/js/bootstrap.min.js", type:"js"},
+                    { src: '/public/bootstrap/css/bootstrap.min.css', type:"css"}
+                ]
+            })
+            
+        </script>
+      
+    </body>
+ </html>
