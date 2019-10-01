@@ -1,5 +1,5 @@
 {
-  "name": "PointerJS",
+  "name": "pointerjs",
   "version": "1.0.3",
   "description": "A simple to use Remote Control and Pointer for RevealJS",
   "main": "Server.js",
