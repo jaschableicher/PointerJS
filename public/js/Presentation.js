@@ -1,4 +1,26 @@
+try{
+    $(function(){})
+    } catch(err){
+        if ("undefined" == typeof jQuery) {
+        
+            var script = document.createElement('script');
+            var xhttp = new XMLHttpRequest();
+            xhttp.open("GET", "/public/js/jquery.min.js", true)
+            xhttp.send();
 
+            xhttp.onreadystatechange = function () {
+                if (this.readyState == 4) {
+                    if (this.status == 200) {
+                        script.src = "/public/js/jquery.min.js";
+                    }else{
+                        script.src = "https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js";
+                    }
+                    document.head.append(script)
+                }
+            }
+        
+        }
+    }
 console.log("You can open your Pointer by pressing Ö")
 var backgroundColor = "red", width = "20px", height = "20px", connectTo, Slideemitted, pointer;
 function initialize(object) {
@@ -19,7 +41,7 @@ var Pointer = {
     initialize: initialize
 }
 //Notification.requestPermission(function(){});
-try{
+function s(){
 $(function () {
     console.log(Reveal.getSlide(2))
 
@@ -75,23 +97,5 @@ $(function () {
 
     }
 });
-} catch(err){
-    if ("undefined" == typeof jQuery) {
-    
-        var script = document.createElement('script');
-        var xhttp = new XMLHttpRequest();
-        xhttp.open("GET", "/public/js/jquery.min.js", true)
-        xhttp.send()
-        xhttp.onreadystatechange = function () {
-            if (this.readyState == 4) {
-                if (this.status == 200) {
-                    script.src = "/public/js/jquery.min.js";
-                }else{
-                    script.src = "https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js";
-                }
-                document.head.append(script)
-            }
-        }
-    
-    };}
+}
 
