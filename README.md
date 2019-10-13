@@ -6,12 +6,22 @@ A simple to use Remote Control and Pointer for RevealJS
 
 ### Client Side
 
-Include PointerJS in the RevealJS presentation:
-```
-<script type="text/javascript" src="/public/js/reveal.js></script>
+You can include PointerJS like this:
+```html
+<script type="text/javascript" src="/public/js/reveal.js"></script>
 <script type="text/javascript" src="/public/js/presentation.js></script>
 ```
-It is important that you include presentation.js after reveal.js
+If you do it that way, you need to initialize it after the reveal.js file
+
+Oryou can include it in the Reveal.initialize part:
+```javascript
+Reveal.initialize({
+      dependencies:[
+        { src:"/public/js/presentation.js" },
+        //Your other plugins
+        ]
+  })
+```
 
 Include PointerJS in your Remote Control side: 
 ```
