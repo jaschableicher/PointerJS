@@ -46,7 +46,7 @@ Pointer.initialize({
 	width: "20", // recommendedwidth and height for the pointer
 	height: "20", 
 	PointerSite : "/pointer", // If not defined its automaticly "/pointer"
-	Server: "localhost:3000" // Only needed if this file is not on the same server or port as this page
+	Server: "localhost:3000" // Only needed if file is not on the same Server
 })/
       })
 ```
@@ -57,8 +57,9 @@ Pointer.initialize({
        server: "localhost:3000", // socketio Server
        notes: true, // You can  see your RevealJS notes
        dependencies:[
-             { src: "/public/bootstrap/js/bootstrap.min.js", type:"js"}, // You can initialize dependencies
-             { src: '/public/bootstrap/css/bootstrap.min.css', type:"css"} // Like in Reveal.initialize
+             { src: "/public/bootstrap/js/bootstrap.min.js", type:"js"}, 
+             { src: '/public/bootstrap/css/bootstrap.min.css', type:"css"}
+	     // You can initialize dependencies like with Reveal.initialize
         ]
 })
 ```
