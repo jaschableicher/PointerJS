@@ -9,7 +9,7 @@ A simple to use Remote Control and Pointer for RevealJS
 You can include PointerJS like this:
 ```html
 <script type="text/javascript" src="/public/js/reveal.js"></script>
-<script type="text/javascript" src="/public/js/presentation.js></script>
+<script type="text/javascript" src="/public/js/presentation.js"></script>
 ```
 If you do it that way, you need to initialize it after the reveal.js file
 
