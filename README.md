@@ -24,8 +24,8 @@ Reveal.initialize({
 ```
 
 Include PointerJS in your Remote Control side: 
-```
-<script type="text/javascript" src="/public/js/Pointer.js></script>
+```html
+<script type="text/javascript" src="/public/js/Pointer.js"></script>
 ```
 
 Now you can go in the terminal and type:
