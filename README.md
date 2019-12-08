@@ -47,8 +47,7 @@ Pointer.initialize({
 	height: "20", 
 	PointerSite : "/pointer", // If not defined its automaticly "/pointer"
 	Server: "localhost:3000" // Only needed if file is not on the same Server
-})/
-      })
+})
 ```
 
 ### Pointer site
