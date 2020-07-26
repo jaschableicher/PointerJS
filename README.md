@@ -1,6 +1,6 @@
 # PointerJS
 
-A simple to use Remote Control and Pointer for (https://github.com/hakimel/reveal.js "RevealJS")
+A simple to use Remote Control and Pointer for [Reveal.js](https://github.com/hakimel/reveal.js)
 
 ## General Usage
 
