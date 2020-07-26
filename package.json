@@ -5,7 +5,8 @@
   "main": "Server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node Server.js"
+    "start": "node Server.js",
+    "dev": "nodemon Server.js"
   },
   "repository": {
     "type": "git",
@@ -20,6 +21,7 @@
   "homepage": "https://github.com/MesshypeWeb/PointerJS#readme",
   "dependencies": {
     "express": "^4.17.1",
+    "qrcode-terminal": "^0.12.0",
     "socket.io": "^2.2.0"
   }
 }
