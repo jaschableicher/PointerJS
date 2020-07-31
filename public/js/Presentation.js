@@ -1,10 +1,11 @@
 if('undefined' == typeof jQuery){throw new Error("PointerJS requires jQuery \n You can get it under: https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js")}
        
 console.log("You can open your Pointer by pressing Ö")
-var backgroundColor = "red", width = "20px", height = "20px", connectTo, Slideemitted, pointer;
+var backgroundColor = "red", width = "20px", height = "20px", connectTo, Slideemitted, pointer, qrcode;
 function initialize(object) {
 
     pointer = object.PointerSite || "/pointer";
+    qrcode = object.QRCodeSite || "/qrcode";
     if (object.color) {
         backgroundColor = object.color;
     }
@@ -21,13 +22,22 @@ var Pointer = {
 }
 //Notification.requestPermission(function(){});
  $(function () {
-    console.log(Reveal.getSlide(2))
-
+    const text = document.getElementsByTagName("title")[0].innerText;
+    console.log(text)
     var socket = io(connectTo);
-    socket.emit("welcome", socket.id)
+    window.onresize = function (){
+        socket.emit("height", {
+            height: window.innerHeight,
+            width: window.innerWidth
+        })
+    }
     socket.emit("height", {
         height: window.innerHeight,
         width: window.innerWidth
+    })
+    socket.on("getTitle", ()=>{
+        const text = document.getElementsByTagName("title")[0].innerText;
+        socket.emit("title",text)
     })
     socket.on("coordinates", function (c) {
         var x = c.X * window.innerWidth;
@@ -71,7 +81,10 @@ var Pointer = {
             window.open(pointer, "_blank", "toolbar=yes,scrollbars=yes,resizable=yes,top=500,left=500,width=400,height=400");
             return;
         }
-
+        else if(e.key.toUpperCase() == "Q") {
+            window.open(qrcode, "_blank", `toolbar=no,scrollbars=no,resizable=no,top=${window.innerHeight/3},left=${window.innerWidth/3},right=0,width=315,height=315`);
+            return;
+        }
 
     }
 });
