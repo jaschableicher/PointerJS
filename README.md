@@ -1,5 +1,4 @@
 # PointerJS
-[![Chat]](https://discord.gg/material-components)
 A simple to use Remote Control and Pointer for [Reveal.js](https://github.com/hakimel/reveal.js)
 
 ## General Usage
