@@ -1,5 +1,5 @@
 # PointerJS
-[![Chat](https://img.shields.io/discord/259087343246508035.svg)](https://discord.gg/material-components)
+[![Chat]](https://discord.gg/material-components)
 A simple to use Remote Control and Pointer for [Reveal.js](https://github.com/hakimel/reveal.js)
 
 ## General Usage
