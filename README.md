@@ -1,3 +1,4 @@
+[![Build Status](https://travis-ci.com/MesshypeWeb/PointerJS.svg?branch=master)](https://travis-ci.com/MesshypeWeb/PointerJS)
 # PointerJS
 A simple to use Remote Control and Pointer for [Reveal.js](https://github.com/hakimel/reveal.js)
 
