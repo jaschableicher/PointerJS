@@ -14,10 +14,9 @@ for (var dev in ifaces) {
     if (iface.length > 0) address = iface[0].address;
 }
 
-
 app.use("/public", express.static("public"));
 
-app.get("/getip", (req, res) => {
+app.get("/", (req, res) => {
     res.sendFile(__dirname + "/lib/demo.html")
 });
 
@@ -28,7 +27,7 @@ app.get("/pointer", (req, res) => {
 app.get("/qrcode",(req,res)=>{
     res.sendFile(__dirname + "/lib/QR.html")
 })
-app.post("/getip",(req,res)=>{
+app.get("/getip",(req,res)=>{
     res.send(address)
 })
 var usersonline = 0;
