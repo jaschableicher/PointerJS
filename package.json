@@ -26,6 +26,7 @@
     "socket.io": "^2.2.0"
   },
   "devDependencies": {
+    "jest": "^26.4.0",
     "supertest": "^4.0.2"
   }
 }
