@@ -4,7 +4,7 @@
   "description": "A simple to use Remote Control and Pointer for RevealJS",
   "main": "Server.js",
   "scripts": {
-    "test": "npm install jest --dev && jest --passWithNoTests",
+    "test": "jest --forceExit",
     "start": "node Server.js",
     "dev": "nodemon Server.js"
   },
@@ -25,5 +25,7 @@
     "qrcode-terminal": "^0.12.0",
     "socket.io": "^2.2.0"
   },
-  "devDependencies": {}
+  "devDependencies": {
+    "supertest": "^4.0.2"
+  }
 }

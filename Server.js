@@ -17,7 +17,7 @@ for (var dev in ifaces) {
 
 app.use("/public", express.static("public"));
 
-app.get("/", (req, res) => {
+app.get("/getip", (req, res) => {
     res.sendFile(__dirname + "/lib/demo.html")
 });
 
@@ -28,11 +28,10 @@ app.get("/pointer", (req, res) => {
 app.get("/qrcode",(req,res)=>{
     res.sendFile(__dirname + "/lib/QR.html")
 })
-app.get("/getip",(req,res)=>{
+app.post("/getip",(req,res)=>{
     res.send(address)
 })
 var usersonline = 0;
-var presentationsConnected = 0;
 io.on("connection", (socket) => {
     usersonline++;
     socket.broadcast.emit("getTitle", true)
@@ -76,8 +75,12 @@ io.on("connection", (socket) => {
 
 
 http.listen(3000, function () {
-    qrcode.generate(`http://${address}:3000`)
-    open(`http://${address}:3000`)
-    console.log('listening on *:3000');
+    if(!process.env.NODE_TEST){
+        qrcode.generate(`http://${address}:3000`)
+        open(`http://${address}:3000`)
+        console.log('listening on *:3000');
+    }
+
 });
 
+module.exports = {http}
