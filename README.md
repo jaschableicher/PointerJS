@@ -39,7 +39,7 @@ To use the Remote Control by going to localhost:3000/pointer
 
 ## Configuration
 ### Main Presentation
-```javascript 
+```js 
 Pointer.initialize({
 	color: "orange",
 	width: "20", // recommendedwidth and height for the pointer
@@ -50,7 +50,7 @@ Pointer.initialize({
 ```
 
 ### Pointer site
-```javascript
+```js
 Pointer.initialize({
        server: "localhost:3000", // socketio Server
        notes: true, // You can  see your RevealJS notes
