@@ -2,7 +2,8 @@ var express = require("express")
 var app = express();
 var http = require('http').createServer(app);
 var io = require('socket.io')(http);
-var qrcode = require("qrcode-terminal")
+var qrcode = require("qrcode-terminal");
+const open = require("open")
 
 var address, os = require('os'), ifaces = os.networkInterfaces();
 
@@ -76,6 +77,7 @@ io.on("connection", (socket) => {
 
 http.listen(3000, function () {
     qrcode.generate(`http://${address}:3000`)
+    open(`http://${address}:3000`)
     console.log('listening on *:3000');
 });
 
