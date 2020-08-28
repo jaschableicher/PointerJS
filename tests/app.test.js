@@ -1,7 +1,9 @@
 const { http } = require('../Server');
 const request = require('supertest');
 var address, os = require('os'), ifaces = os.networkInterfaces();
+var fs = require("fs")
   beforeAll(() => {
+    
     process.env.NODE_TEST = true;
     
     for (var dev in ifaces) {
@@ -11,9 +13,17 @@ var address, os = require('os'), ifaces = os.networkInterfaces();
         if (iface.length > 0) address = iface[0].address;
     }
   })
+
+test('CDNs installed', ()=>{
+ const requiredPublicFiles = ['css/reveal.css', 'js/jquery.min.js','js/Pointer.js','js/Presentation.js','js/QR.js','js/reveal.js'];
+ requiredPublicFiles.map(val =>{
+  let x = fs.existsSync(__dirname +'/../public/'+val);
+  console.log(x)
+  expect(x).toBe(true)
+ })
+ 
+})
 test('get ip', async () => {
-
-
     const res = await request(http).get('/getip');
     expect(res.status).toBe(200);
     expect(res.text).toBe(address)
