@@ -35,8 +35,8 @@ test('presentation is being hosted without errors', async ()=>{
 })
 test('CDNs are being hosted', async ()=>{
   const requiredPublicFiles = ['css/reveal.css', 'js/jquery.min.js','js/Pointer.js','js/Presentation.js','js/QR.js','js/reveal.js'];
-  requiredPublicFiles.forEach(val =>{
-    const res = request(http).get(`/public/${val}`);
+  requiredPublicFiles.map(async val =>{
+    let res = await request(http).get(`/public/${val}`);
     expect(res.status).toBe(200);
   })
 })
