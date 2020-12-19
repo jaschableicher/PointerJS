@@ -18,7 +18,6 @@ test('CDNs installed', ()=>{
  const requiredPublicFiles = ['css/reveal.css', 'js/jquery.min.js','js/Pointer.js','js/Presentation.js','js/QR.js','js/reveal.js'];
  requiredPublicFiles.map(val =>{
   let x = fs.existsSync(__dirname +'/../public/'+val);
-  console.log(x)
   expect(x).toBe(true)
  })
  
@@ -33,4 +32,11 @@ test('presentation is being hosted without errors', async ()=>{
     const res = await request(http).get('/');
     expect(res.status).toBe(200)
     expect(res.header['content-type']).toBe('text/html; charset=UTF-8');
+})
+test('CDNs are being hosted', async ()=>{
+  const requiredPublicFiles = ['css/reveal.css', 'js/jquery.min.js','js/Pointer.js','js/Presentation.js','js/QR.js','js/reveal.js'];
+  requiredPublicFiles.forEach(val =>{
+    const res = request(http).get(`/public/${val}`);
+    expect(res.status).toBe(200);
+  })
 })
